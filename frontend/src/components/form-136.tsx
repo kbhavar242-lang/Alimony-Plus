@@ -22,34 +22,33 @@ setForm((previous) => ({
 [field]: value,
 }));
 }
-
 function downloadDraft() {
-const content = [
-"FINANCIAL DISCLOSURE - DRAFT",
-"",
-"Full name: ${form.fullName}",
-"Case number: ${form.caseNumber}",
-"Employment: ${form.employment}",
-"Monthly income: ${form.monthlyIncome}",
-"Monthly expenses: ${form.monthlyExpenses}",
-"Assets: ${form.assets}",
-"Liabilities: ${form.liabilities}",
-"",
-"Draft only. Verify the applicable official court form before filing.",
-].join("\n");
+  const content = [
+    "FINANCIAL DISCLOSURE - DRAFT",
+    "",
+    `Full name: ${form.fullName}`,
+    `Case number: ${form.caseNumber}`,
+    `Employment: ${form.employment}`,
+    `Monthly income: ${form.monthlyIncome}`,
+    `Monthly expenses: ${form.monthlyExpenses}`,
+    `Assets: ${form.assets}`,
+    `Liabilities: ${form.liabilities}`,
+    "",
+    "Draft only. Verify the applicable official court form before filing."
+  ].join("\n");
 
-const blob = new Blob([content], {
-  type: "text/plain;charset=utf-8",
-});
-const url = URL.createObjectURL(blob);
-const link = document.createElement("a");
+  const blob = new Blob([content], {
+    type: "text/plain;charset=utf-8"
+  });
 
-link.href = url;
-link.download = "financial-disclosure-draft.txt";
-link.click();
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
 
-URL.revokeObjectURL(url);
+  link.href = url;
+  link.download = "financial-disclosure-draft.txt";
+  link.click();
 
+  URL.revokeObjectURL(url);
 }
 
 const fields = [
